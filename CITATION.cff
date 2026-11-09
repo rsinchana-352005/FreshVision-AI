@@ -1,17 +1,17 @@
 
-
-
 cff-version: "1.2.0"
-message: "Please cite FreshVision AI when using this software in research."
+message: "If you use FreshVision AI in your research, please cite this software."
 title: "FreshVision AI"
 type: software
+authors:
+  - family-names: "R"
+    given-names: "Sinchana"
 repository-code: "https://github.com/rsinchana-352005/FreshVision-AI"
+abstract: "A research-oriented web application for fruit quality classification using MobileNetV2 and EfficientNetB0, with Grad-CAM and LIME explainability."
 keywords:
-  - Artificial Intelligence
-  - Fruit Quality Classification
-  - Deep Learning
-  - Explainable AI
-  - MobileNetV2
-  - EfficientNetB0
-  - Grad-CAM
-  - LIME
+  - "Artificial Intelligence"
+  - "Fruit Quality Classification"
+  - "Deep Learning"
+  - "Explainable AI"
+  - "Grad-CAM"
+  - "LIME"
