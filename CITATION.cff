@@ -1,13 +1,11 @@
 
-cff-version: 1.2.0
-message: "If you use FreshVision AI in your research, please cite this repository."
-title: "FreshVision AI: AI-Powered Fruit Quality Classification with Explainable Artificial Intelligence"
+
+
+cff-version: "1.2.0"
+message: "Please cite FreshVision AI when using this software in research."
+title: "FreshVision AI"
+type: software
 repository-code: "https://github.com/rsinchana-352005/FreshVision-AI"
-abstract: >
-  FreshVision AI is a research-oriented web application for
-  fruit quality classification using MobileNetV2 and EfficientNetB0.
-  It integrates Grad-CAM and LIME for explainable AI,
-  model comparison, interactive analytics, and PDF report generation.
 keywords:
   - Artificial Intelligence
   - Fruit Quality Classification
