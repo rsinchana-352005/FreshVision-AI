@@ -43,7 +43,7 @@ app.config.update(
     WTF_CSRF_TIME_LIMIT=3600,
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=False,
+    SESSION_COOKIE_SECURE=os.getenv("SESSION_COOKIE_SECURE", "False").lower() == "true",
     PERMANENT_SESSION_LIFETIME=timedelta(hours=2)
 )
 
@@ -798,4 +798,4 @@ def download_evaluation_report():
         }), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
