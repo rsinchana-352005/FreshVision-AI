@@ -1,0 +1,252 @@
+
+{% extends "base.html" %}
+
+{% block title %}Explainable AI | FreshVision AI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/explainability.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="explainability-page">
+
+    <!-- Page Heading -->
+    <div class="page-heading">
+        <div>
+            <h1>Explainable AI</h1>
+            <p>
+                Understand how our deep learning models make
+                fruit quality predictions.
+            </p>
+        </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="glass-card overview-card">
+        <div class="overview-icon">
+            <i data-lucide="brain-circuit"></i>
+        </div>
+
+        <div>
+            <h2>AI Explanation Overview</h2>
+            <p>
+                FreshVision AI uses Grad-CAM and LIME to provide
+                visual explanations of model predictions. These
+                techniques help researchers understand which image
+                regions influenced the classification.
+            </p>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="explainabilityEmpty" class="glass-card empty-state">
+
+        <div class="empty-icon">
+            <i data-lucide="scan-search"></i>
+        </div>
+
+        <h2>No Analysis Available</h2>
+
+        <p>
+            Upload and analyze a fruit image first to view its
+            Grad-CAM and LIME explanations here.
+        </p>
+
+        <a href="/analysis" class="btn btn-primary">
+            <i data-lucide="upload"></i>
+            Start New Analysis
+        </a>
+
+    </div>
+
+    <!-- Explanation Results -->
+    <div id="explainabilityResults" style="display:none;">
+
+        <!-- Prediction Summary -->
+        <div class="glass-card prediction-summary-card">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">LATEST ANALYSIS</span>
+                    <h2>Prediction Summary</h2>
+                </div>
+
+                <span class="result-status">
+                    <span class="status-dot"></span>
+                    Analysis Completed
+                </span>
+            </div>
+
+            <div id="explanationSummary"></div>
+
+        </div>
+
+        <!-- Grad-CAM -->
+        <div class="explanation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">VISUAL INTERPRETATION</span>
+                    <h2>Grad-CAM Explanations</h2>
+                    <p>
+                        Visualize image regions that contribute
+                        to the model's prediction.
+                    </p>
+                </div>
+
+                <span class="method-tag gradcam-tag">Grad-CAM</span>
+            </div>
+
+            <div class="comparison-grid">
+
+                <div class="glass-card explanation-image-card">
+                    <h3>
+                        <i data-lucide="layers"></i>
+                        MobileNetV2
+                    </h3>
+
+                    <img id="mobileGradcam"
+                         alt="MobileNetV2 Grad-CAM explanation"
+                         loading="lazy">
+
+                    <p class="image-caption">
+                        MobileNetV2 activation visualization
+                    </p>
+                </div>
+
+                <div class="glass-card explanation-image-card">
+                    <h3>
+                        <i data-lucide="layers"></i>
+                        EfficientNetB0
+                    </h3>
+
+                    <img id="efficientGradcam"
+                         alt="EfficientNetB0 Grad-CAM explanation"
+                         loading="lazy">
+
+                    <p class="image-caption">
+                        EfficientNetB0 activation visualization
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LIME -->
+        <div class="explanation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">LOCAL EXPLANATION</span>
+                    <h2>LIME Explanations</h2>
+                    <p>
+                        Examine image regions that influence
+                        individual classification decisions.
+                    </p>
+                </div>
+
+                <span class="method-tag lime-tag">LIME</span>
+            </div>
+
+            <div class="comparison-grid">
+
+                <div class="glass-card explanation-image-card">
+                    <h3>
+                        <i data-lucide="scan"></i>
+                        MobileNetV2
+                    </h3>
+
+                    <img id="mobileLime"
+                         alt="MobileNetV2 LIME explanation"
+                         loading="lazy">
+
+                    <p class="image-caption">
+                        MobileNetV2 local explanation
+                    </p>
+                </div>
+
+                <div class="glass-card explanation-image-card">
+                    <h3>
+                        <i data-lucide="scan"></i>
+                        EfficientNetB0
+                    </h3>
+
+                    <img id="efficientLime"
+                         alt="EfficientNetB0 LIME explanation"
+                         loading="lazy">
+
+                    <p class="image-caption">
+                        EfficientNetB0 local explanation
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Understanding Methods -->
+    <div class="glass-card methods-card">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-eyebrow">RESEARCH METHODOLOGY</span>
+                <h2>Understanding Explainable AI</h2>
+            </div>
+        </div>
+
+        <div class="methods-grid">
+
+            <div class="method-description">
+                <div class="method-icon gradcam-icon">
+                    <i data-lucide="layers"></i>
+                </div>
+
+                <h3>Grad-CAM</h3>
+
+                <p>
+                    Gradient-weighted Class Activation Mapping
+                    highlights image regions that contribute
+                    to a model's prediction using gradient
+                    information.
+                </p>
+            </div>
+
+            <div class="method-description">
+                <div class="method-icon lime-icon">
+                    <i data-lucide="scan"></i>
+                </div>
+
+                <h3>LIME</h3>
+
+                <p>
+                    Local Interpretable Model-Agnostic Explanations
+                    identifies image regions that influence an
+                    individual prediction through local
+                    approximations.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="research-note">
+            <i data-lucide="info"></i>
+            <p>
+                These visualizations provide model interpretability
+                insights. Highlighted regions should not be treated
+                as proof of food quality or safety.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/explainability.js') }}"></script>
+{% endblock %}

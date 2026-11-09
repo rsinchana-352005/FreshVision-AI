@@ -1,0 +1,236 @@
+
+.feedback-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 45px;
+}
+
+.feedback-page .page-heading {
+    margin-bottom: 30px;
+}
+
+.feedback-page .page-heading h1 {
+    font-size: 32px;
+    font-weight: 750;
+    margin-bottom: 9px;
+}
+
+.feedback-page .page-heading p {
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+.feedback-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 27px !important;
+    margin-bottom: 28px;
+    border-radius: 18px;
+}
+
+.feedback-intro-icon,
+.feedback-info-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 13px;
+    color: #34D399;
+    background: rgba(16,185,129,.12);
+}
+
+.feedback-intro h2 {
+    font-size: 19px;
+    margin-bottom: 9px;
+    color: #F8FAFC;
+}
+
+.feedback-intro p {
+    color: #94A3B8;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.feedback-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(250px, .8fr);
+    gap: 23px;
+    align-items: start;
+}
+
+.feedback-form-card {
+    padding: 30px !important;
+    border-radius: 18px;
+}
+
+.feedback-section-heading {
+    margin-bottom: 27px;
+}
+
+.feedback-eyebrow {
+    color: #34D399;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.7px;
+}
+
+.feedback-section-heading h2 {
+    font-size: 21px;
+    margin: 9px 0;
+    color: #F8FAFC;
+}
+
+.feedback-section-heading p {
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1.7;
+}
+
+.feedback-field {
+    margin-bottom: 23px;
+}
+
+.feedback-field label {
+    display: block;
+    color: #E2E8F0;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 11px;
+}
+
+.feedback-field select,
+.feedback-field textarea {
+    width: 100%;
+    color: #F8FAFC;
+    background: #0B1220;
+    border: 1px solid rgba(148,163,184,.2);
+    border-radius: 11px;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color .2s;
+}
+
+.feedback-field select:focus,
+.feedback-field textarea:focus {
+    border-color: #10B981;
+}
+
+.feedback-field select option {
+    background: #17263A;
+}
+
+.feedback-field textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.7;
+}
+
+.feedback-character-count {
+    text-align: right;
+    margin-top: 8px;
+    color: #718096;
+    font-size: 11px;
+}
+
+.feedback-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 180px;
+}
+
+.feedback-submit:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.feedback-status {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.feedback-side-panel {
+    display: grid;
+    gap: 17px;
+}
+
+.feedback-info-card {
+    padding: 23px !important;
+}
+
+.feedback-info-icon {
+    margin-bottom: 17px;
+    color: #22D3EE;
+    background: rgba(34,211,238,.10);
+}
+
+.feedback-info-card h3 {
+    color: #F8FAFC;
+    font-size: 15px;
+    margin-bottom: 9px;
+}
+
+.feedback-info-card p {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.feedback-privacy-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 25px;
+    padding: 17px;
+    border-radius: 13px;
+    background: rgba(34,211,238,.05);
+    border: 1px solid rgba(34,211,238,.13);
+}
+
+.feedback-privacy-note svg {
+    color: #22D3EE;
+    width: 19px;
+    flex-shrink: 0;
+}
+
+.feedback-privacy-note p {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+    .feedback-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback-side-panel {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .feedback-page .page-heading h1 {
+        font-size: 26px;
+    }
+
+    .feedback-intro {
+        flex-direction: column;
+        padding: 21px !important;
+    }
+
+    .feedback-form-card {
+        padding: 21px !important;
+    }
+
+    .feedback-side-panel {
+        grid-template-columns: 1fr;
+    }
+}

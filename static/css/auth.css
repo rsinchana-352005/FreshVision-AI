@@ -1,0 +1,255 @@
+
+/* ========================================
+   FRESHVISION AI - AUTHENTICATION STYLES
+======================================== */
+
+.auth-page {
+    min-height: 100vh;
+    margin: 0;
+    color: #F8FAFC;
+    background:
+        linear-gradient(135deg, rgba(11, 18, 32, 0.96), rgba(11, 18, 32, 0.82)),
+        url("/static/images/backgrounds/auth-backgrounds.png") center/cover no-repeat fixed;
+    font-family: inherit;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+}
+
+.auth-brand {
+    margin-bottom: 28px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F8FAFC;
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.brand-logo svg {
+    color: #10B981;
+    width: 29px;
+    height: 29px;
+}
+
+.brand-accent {
+    color: #10B981;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    background: rgba(17, 28, 46, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 17px;
+    background: rgba(16, 185, 129, 0.13);
+    color: #10B981;
+}
+
+.auth-icon svg {
+    width: 27px;
+    height: 27px;
+}
+
+.auth-heading h1 {
+    margin: 0 0 9px;
+    font-size: 29px;
+    font-weight: 750;
+}
+
+.auth-heading p {
+    margin: 0;
+    color: #94A3B8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.auth-card .form-group {
+    margin-bottom: 22px;
+}
+
+.auth-card .form-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #E2E8F0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper > svg {
+    position: absolute;
+    left: 15px;
+    width: 18px;
+    height: 18px;
+    color: #64748B;
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    min-height: 49px;
+    padding: 0 45px;
+    color: #F8FAFC;
+    background: rgba(11, 18, 32, 0.65);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 11px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper input::placeholder {
+    color: #64748B;
+}
+
+.input-wrapper input:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    padding: 6px;
+    color: #94A3B8;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.auth-submit {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    color: #06251B;
+    background: linear-gradient(135deg, #10B981, #34D399);
+    border: none;
+    border-radius: 11px;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 25px rgba(16, 185, 129, 0.2);
+}
+
+.auth-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.auth-submit svg {
+    width: 18px;
+    height: 18px;
+}
+
+.auth-message {
+    min-height: 18px;
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #F87171;
+}
+
+.auth-message.success {
+    color: #34D399;
+}
+
+.auth-footer {
+    margin-top: 27px;
+    text-align: center;
+}
+
+.auth-footer p {
+    color: #94A3B8;
+    font-size: 13px;
+}
+
+.auth-footer a {
+    color: #34D399;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 14px;
+    color: #94A3B8 !important;
+    font-size: 13px;
+}
+
+.back-home svg {
+    width: 15px;
+    height: 15px;
+}
+
+.auth-copyright {
+    margin: 25px 0 0;
+    color: #64748B;
+    font-size: 11px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 28px 22px;
+    }
+
+    .auth-heading h1 {
+        font-size: 25px;
+    }
+}

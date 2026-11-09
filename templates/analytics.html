@@ -1,0 +1,262 @@
+
+{% extends "base.html" %}
+
+{% block title %}Research Analytics | FreshVision AI{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/analytics.css') }}">
+{% endblock %}
+{% block content %}
+
+<div class="analytics-page">
+
+    <!-- Page Heading -->
+    <div class="page-heading">
+        <div>
+            <h1>Research Analytics</h1>
+            <p>
+                Explore dataset characteristics, model performance
+                and research evaluation results.
+            </p>
+        </div>
+    </div>
+
+<div style="margin:20px 0;">
+    <a
+        href="/api/reports/evaluation"
+        class="btn btn-primary"
+        style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;"
+    >
+        <i data-lucide="file-down"></i>
+        Download Model Evaluation PDF
+    </a>
+</div>
+    <!-- Dataset Overview -->
+    <div class="analytics-section-heading">
+        <span class="section-eyebrow">DATASET OVERVIEW</span>
+        <h2>Fruit Dataset Statistics</h2>
+    </div>
+
+    <div class="analytics-stats-grid">
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon cyan">
+                <i data-lucide="images"></i>
+            </div>
+            <p>Total Images</p>
+            <h2>18,452</h2>
+            <span>Selected dataset images</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon green">
+                <i data-lucide="tags"></i>
+            </div>
+            <p>Classification Classes</p>
+            <h2>12</h2>
+            <span>Good and Bad categories</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon purple">
+                <i data-lucide="apple"></i>
+            </div>
+            <p>Fruit Categories</p>
+            <h2>6</h2>
+            <span>Apple, Banana, Guava, Lime, Orange and Pomegranate</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon orange">
+                <i data-lucide="layers"></i>
+            </div>
+            <p>Dataset Splits</p>
+            <h2>3</h2>
+            <span>Training, validation and testing</span>
+        </div>
+
+    </div>
+
+    <!-- Dataset Distribution -->
+    <div class="analytics-section-heading">
+        <span class="section-eyebrow">DATA PARTITIONING</span>
+        <h2>Dataset Distribution</h2>
+        <p>Distribution of images across the three evaluation subsets.</p>
+    </div>
+
+    <div class="glass-card analytics-chart-card">
+        <div class="chart-heading">
+            <div>
+                <h3>Training, Validation and Test Images</h3>
+                <p>Group-aware dataset split</p>
+            </div>
+        </div>
+
+        <div class="analytics-chart-container">
+            <canvas id="datasetChart"></canvas>
+        </div>
+
+        <div class="dataset-count-grid">
+            <div>
+                <span class="legend-dot training-dot"></span>
+                Training
+                <strong>12,912</strong>
+            </div>
+            <div>
+                <span class="legend-dot validation-dot"></span>
+                Validation
+                <strong>2,764</strong>
+            </div>
+            <div>
+                <span class="legend-dot testing-dot"></span>
+                Testing
+                <strong>2,776</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Performance -->
+    <div class="analytics-section-heading">
+        <span class="section-eyebrow">MODEL EVALUATION</span>
+        <h2>Model Performance Analytics</h2>
+        <p>Comparative evaluation on the 2,776-image test dataset.</p>
+    </div>
+
+    <div class="analytics-stats-grid">
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon cyan">
+                <i data-lucide="target"></i>
+            </div>
+            <p>MobileNetV2 Accuracy</p>
+            <h2>98.13%</h2>
+            <span>Test accuracy</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon green">
+                <i data-lucide="target"></i>
+            </div>
+            <p>EfficientNetB0 Accuracy</p>
+            <h2>98.63%</h2>
+            <span>Test accuracy</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon purple">
+                <i data-lucide="activity"></i>
+            </div>
+            <p>MobileNetV2 Macro F1</p>
+            <h2>0.9768</h2>
+            <span>Macro average</span>
+        </div>
+
+        <div class="glass-card analytics-stat-card">
+            <div class="analytics-stat-icon orange">
+                <i data-lucide="activity"></i>
+            </div>
+            <p>EfficientNetB0 Macro F1</p>
+            <h2>0.9816</h2>
+            <span>Macro average</span>
+        </div>
+
+    </div>
+
+    <!-- Performance Charts -->
+    <div class="analytics-charts-grid">
+
+        <div class="glass-card analytics-chart-card">
+            <div class="chart-heading">
+                <div>
+                    <h3>Classification Metrics</h3>
+                    <p>Precision, recall and F1-score</p>
+                </div>
+            </div>
+
+            <div class="analytics-chart-container">
+                <canvas id="metricsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="glass-card analytics-chart-card">
+            <div class="chart-heading">
+                <div>
+                    <h3>Inference Time</h3>
+                    <p>Total prediction time for 2,776 images</p>
+                </div>
+            </div>
+
+            <div class="analytics-chart-container">
+                <canvas id="inferenceChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Research Findings -->
+    <div class="analytics-section-heading">
+        <span class="section-eyebrow">RESEARCH OBSERVATIONS</span>
+        <h2>Model Evaluation Insights</h2>
+    </div>
+
+    <div class="glass-card research-insights-card">
+
+        <div class="insight-item">
+            <i data-lucide="trending-up"></i>
+            <div>
+                <h3>Higher Classification Performance</h3>
+                <p>
+                    EfficientNetB0 achieved higher test accuracy,
+                    macro precision, macro recall and macro F1-score
+                    than MobileNetV2 in the evaluated test set.
+                </p>
+            </div>
+        </div>
+
+        <div class="insight-item">
+            <i data-lucide="zap"></i>
+            <div>
+                <h3>Inference Time Comparison</h3>
+                <p>
+                    MobileNetV2 recorded a lower total prediction
+                    time than EfficientNetB0 under the measured
+                    evaluation conditions.
+                </p>
+            </div>
+        </div>
+
+        <div class="insight-item">
+            <i data-lucide="microscope"></i>
+            <div>
+                <h3>Explainability Integration</h3>
+                <p>
+                    Grad-CAM and LIME provide complementary
+                    visualization methods for investigating
+                    model predictions.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Research Note -->
+    <div class="analytics-research-note">
+        <i data-lucide="info"></i>
+        <p>
+            Results represent evaluation on the selected test dataset.
+            High test performance does not establish universal
+            real-world classification accuracy or food safety.
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+{% endblock %}

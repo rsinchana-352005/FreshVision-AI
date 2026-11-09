@@ -1,0 +1,153 @@
+
+{% extends "base.html" %}
+
+{% block title %}Feedback | FreshVision AI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/feedback.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="feedback-page">
+
+    <div class="page-heading">
+        <div>
+            <h1>Researcher Feedback</h1>
+            <p>Help us improve the FreshVision AI research experience.</p>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="glass-card feedback-intro">
+        <div class="feedback-intro-icon">
+            <i data-lucide="message-square-heart"></i>
+        </div>
+        <div>
+            <h2>Your Feedback Matters</h2>
+            <p>
+                Share your suggestions, report technical issues or
+                provide feedback about the platform's AI features.
+                Your input helps us improve the research workspace.
+            </p>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="feedback-layout">
+
+        <div class="glass-card feedback-form-card">
+
+            <div class="feedback-section-heading">
+                <span class="feedback-eyebrow">FEEDBACK FORM</span>
+                <h2>Share Your Experience</h2>
+                <p>Complete the fields below to submit your feedback.</p>
+            </div>
+
+            <form id="feedbackForm">
+
+                <div class="feedback-field">
+                    <label for="feedbackCategory">
+                        Feedback Category
+                    </label>
+
+                    <select id="feedbackCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="General Feedback">General Feedback</option>
+                        <option value="Technical Issue">Technical Issue</option>
+                        <option value="AI Prediction">AI Prediction</option>
+                        <option value="UI/UX Suggestion">UI/UX Suggestion</option>
+                        <option value="Feature Request">Feature Request</option>
+                    </select>
+                </div>
+
+                <div class="feedback-field">
+                    <label for="feedbackMessage">
+                        Your Message
+                    </label>
+
+                    <textarea
+                        id="feedbackMessage"
+                        rows="7"
+                        minlength="10"
+                        maxlength="2000"
+                        placeholder="Describe your experience, suggestion or issue..."
+                        required></textarea>
+
+                    <div class="feedback-character-count">
+                        <span id="characterCount">0 / 2000</span>
+                    </div>
+                </div>
+
+                <button type="submit"
+                        id="feedbackSubmit"
+                        class="btn btn-primary feedback-submit">
+                    <i data-lucide="send"></i>
+                    Submit Feedback
+                </button>
+
+                <div id="feedbackStatus"
+                     class="feedback-status"
+                     role="status"
+                     aria-live="polite"></div>
+
+            </form>
+
+        </div>
+
+        <!-- Information Panel -->
+        <div class="feedback-side-panel">
+
+            <div class="glass-card feedback-info-card">
+                <div class="feedback-info-icon">
+                    <i data-lucide="lightbulb"></i>
+                </div>
+                <h3>Suggestions</h3>
+                <p>
+                    Share ideas for improving the dashboard,
+                    research tools and user experience.
+                </p>
+            </div>
+
+            <div class="glass-card feedback-info-card">
+                <div class="feedback-info-icon">
+                    <i data-lucide="bug"></i>
+                </div>
+                <h3>Report an Issue</h3>
+                <p>
+                    Let us know about technical problems,
+                    unexpected errors or interface issues.
+                </p>
+            </div>
+
+            <div class="glass-card feedback-info-card">
+                <div class="feedback-info-icon">
+                    <i data-lucide="brain-circuit"></i>
+                </div>
+                <h3>AI Research Feedback</h3>
+                <p>
+                    Share observations about classification
+                    performance and explainability features.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="feedback-privacy-note">
+        <i data-lucide="shield-check"></i>
+        <p>
+            Feedback is submitted through your authenticated account.
+            Please do not include passwords or other sensitive information.
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
+{% endblock %}

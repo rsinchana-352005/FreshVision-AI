@@ -1,0 +1,39 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python environments
+freshvision_env/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Sensitive files
+cookies.txt
+user2_cookies.txt
+
+# Research datasets and experiment results
+dataset/
+results/
+
+# Temporary uploads and generated reports
+uploads/*
+!uploads/.gitkeep
+generated_reports/*
+!generated_reports/.gitkeep
+
+# Keep only deployment models
+models/*
+!models/mobilenetv2_best.keras
+!models/efficientnetb0_best.keras
+
+# Development files
+.vscode/
+.idea/
+project_inventory.txt
+
+# Operating system files
+.DS_Store
+Thumbs.db

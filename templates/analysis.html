@@ -1,0 +1,212 @@
+
+{% extends "base.html" %}
+
+{% block title %}Fruit Analysis | FreshVision AI{% endblock %}
+{% block breadcrumb %}Fruit Analysis{% endblock %}
+
+{% block extra_css %}
+<style>
+.analysis-header {
+    margin-bottom: 25px;
+}
+.analysis-header h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+.analysis-header p {
+    color: #94A3B8;
+    line-height: 1.6;
+}
+.analysis-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+.analysis-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: #17263A;
+    border: 1px solid rgba(148,163,184,.14);
+}
+.analysis-card h2 {
+    font-size: 18px;
+    margin: 0 0 18px;
+}
+.upload-area {
+    min-height: 260px;
+    border: 2px dashed rgba(16,185,129,.4);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 20px;
+    background: rgba(16,185,129,.04);
+    cursor: pointer;
+}
+.upload-area:hover {
+    border-color: #10B981;
+    background: rgba(16,185,129,.08);
+}
+.upload-area svg {
+    width: 42px;
+    height: 42px;
+    color: #34D399;
+}
+.upload-area p {
+    color: #94A3B8;
+    font-size: 13px;
+    margin: 0;
+}
+.upload-area strong {
+    color: #F8FAFC;
+}
+.image-preview {
+    display: none;
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+.analysis-controls {
+    margin-top: 22px;
+}
+.analysis-controls label {
+    display: block;
+    margin-bottom: 9px;
+    color: #CBD5E1;
+    font-size: 13px;
+}
+.analysis-controls select {
+    width: 100%;
+    padding: 13px;
+    color: #F8FAFC;
+    background: #0B1220;
+    border: 1px solid rgba(148,163,184,.2);
+    border-radius: 10px;
+}
+.analyze-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#10B981,#34D399);
+    color: #06251B;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+}
+.analyze-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+.analysis-status {
+    min-height: 20px;
+    margin-top: 12px;
+    color: #94A3B8;
+    font-size: 13px;
+}
+.analysis-info {
+    margin-top: 22px;
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(34,211,238,.05);
+    border: 1px solid rgba(34,211,238,.15);
+    color: #CBD5E1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+@media(max-width:850px) {
+    .analysis-layout {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="analysis-header">
+    <h1>Fruit Quality Analysis</h1>
+    <p>
+        Upload a fruit image to analyze its visual quality using
+        FreshVision AI deep learning models.
+    </p>
+</section>
+
+<div class="analysis-layout">
+
+    <section class="analysis-card">
+        <h2><i data-lucide="image-plus"></i> Upload Fruit Image</h2>
+
+        <label class="upload-area" for="fruitImage">
+            <i data-lucide="cloud-upload"></i>
+            <strong id="uploadTitle">Drop your image here or browse</strong>
+            <p>Supported formats: JPG, JPEG, PNG, WEBP</p>
+            <p>Maximum file size: 8 MB</p>
+            <img id="imagePreview" class="image-preview" alt="Selected fruit preview">
+        </label>
+
+        <input
+            type="file"
+            id="fruitImage"
+            accept=".jpg,.jpeg,.png,.webp"
+            hidden
+        >
+
+        <div class="analysis-controls">
+            <label for="modelSelection">AI Model</label>
+            <select id="modelSelection">
+                <option value="both">Compare Both Models</option>
+                <option value="mobilenetv2">MobileNetV2</option>
+                <option value="efficientnetb0">EfficientNetB0</option>
+            </select>
+        </div>
+
+        <button id="analyzeButton" class="analyze-button" disabled>
+            <i data-lucide="scan-search"></i>
+            Analyze Fruit
+        </button>
+
+        <p id="analysisStatus" class="analysis-status">
+            Select an image to begin analysis.
+        </p>
+    </section>
+
+    <section class="analysis-card">
+        <h2><i data-lucide="chart-no-axes-combined"></i> Analysis Results</h2>
+
+        <div id="resultsPlaceholder">
+            <div style="text-align:center;padding:65px 15px;">
+                <i data-lucide="brain-circuit"
+                   style="width:45px;height:45px;color:#10B981;"></i>
+                <h3>Waiting for Analysis</h3>
+                <p style="color:#94A3B8;font-size:13px;line-height:1.7;">
+                    Your prediction results will appear here
+                    after image analysis.
+                </p>
+            </div>
+        </div>
+
+        <div id="analysisResults" hidden>
+            <!-- Prediction results will be rendered here by JavaScript -->
+        </div>
+    </section>
+
+</div>
+
+<div class="analysis-info">
+    <strong>Research note:</strong>
+    FreshVision AI classifies visual fruit quality using its trained
+    dataset categories. Predictions are research estimates and do not
+    establish food safety or edibility.
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}

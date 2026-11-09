@@ -1,0 +1,391 @@
+
+{% extends "base.html" %}
+
+{% block title %}Model Comparison | FreshVision AI{% endblock %}
+{% block breadcrumb %}Model Comparison{% endblock %}
+
+{% block extra_css %}
+<style>
+.comparison-header {
+    margin-bottom: 25px;
+}
+.comparison-header h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+.comparison-header p {
+    color: #94A3B8;
+    line-height: 1.6;
+}
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+.model-card, .metric-card {
+    padding: 23px;
+    border-radius: 17px;
+    background: #17263A;
+    border: 1px solid rgba(148,163,184,.14);
+}
+.model-card h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.metric-value {
+    font-size: 34px;
+    font-weight: 800;
+    color: #34D399;
+    margin-bottom: 5px;
+}
+.metric-label {
+    color: #94A3B8;
+    font-size: 13px;
+}
+.comparison-section {
+    margin: 28px 0 16px;
+    font-size: 19px;
+}
+.metric-table-wrapper {
+    overflow-x: auto;
+    border-radius: 15px;
+}
+.metric-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #17263A;
+    min-width: 450px;
+}
+.metric-table th, .metric-table td {
+    padding: 17px;
+    text-align: left;
+    border-bottom: 1px solid rgba(148,163,184,.12);
+    font-size: 13px;
+}
+.metric-table th {
+    color: #34D399;
+    font-weight: 700;
+}
+.metric-table td {
+    color: #CBD5E1;
+}
+.metric-table tr:last-child td {
+    border-bottom: none;
+}
+.performance-note {
+    margin-top: 23px;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(16,185,129,.07);
+    border: 1px solid rgba(16,185,129,.18);
+    color: #CBD5E1;
+    font-size: 13px;
+    line-height: 1.8;
+}
+@media(max-width:700px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="comparison-header">
+    <h1>Model Performance Comparison</h1>
+    <p>
+        Compare the classification performance of MobileNetV2
+        and EfficientNetB0 using the FreshVision AI test dataset.
+    </p>
+</section>
+
+<h2 class="comparison-section">Model Overview</h2>
+
+<div class="comparison-grid">
+
+    <div class="model-card">
+        <h2><i data-lucide="brain-circuit"></i> MobileNetV2</h2>
+
+        <div class="metric-value">98.13%</div>
+        <div class="metric-label">Test Accuracy</div>
+
+        <hr style="border-color:rgba(148,163,184,.12);margin:20px 0;">
+
+        <div class="metric-value">0.9768</div>
+        <div class="metric-label">Macro F1-Score</div>
+    </div>
+
+    <div class="model-card">
+        <h2><i data-lucide="network"></i> EfficientNetB0</h2>
+
+        <div class="metric-value">98.63%</div>
+        <div class="metric-label">Test Accuracy</div>
+
+        <hr style="border-color:rgba(148,163,184,.12);margin:20px 0;">
+
+        <div class="metric-value">0.9816</div>
+        <div class="metric-label">Macro F1-Score</div>
+    </div>
+
+</div>
+
+
+<h2 class="comparison-section">Visual Performance Comparison</h2>
+
+<div class="comparison-grid">
+
+    <!-- Accuracy Chart -->
+    <div class="model-card">
+        <h2>Test Accuracy</h2>
+        <canvas id="accuracyChart"></canvas>
+    </div>
+
+    <!-- Macro F1 Chart -->
+    <div class="model-card">
+        <h2>Macro F1-Score</h2>
+        <canvas id="f1Chart"></canvas>
+    </div>
+
+    <!-- Precision, Recall and F1 Chart -->
+    <div class="model-card">
+        <h2>Precision, Recall & F1-Score</h2>
+        <canvas id="prfChart"></canvas>
+    </div>
+
+    <!-- Inference Time Chart -->
+    <div class="model-card">
+        <h2>Inference Time Comparison</h2>
+        <canvas id="inferenceChart"></canvas>
+        <p class="chart-description">
+            Total prediction time for 2,776 test images (seconds).
+        </p>
+    </div>
+
+</div>
+
+
+
+<h2 class="comparison-section">Performance Metrics</h2>
+
+<div class="metric-table-wrapper">
+    <table class="metric-table">
+        <thead>
+            <tr>
+                <th>Evaluation Metric</th>
+                <th>MobileNetV2</th>
+                <th>EfficientNetB0</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Test Accuracy</td>
+                <td>98.13%</td>
+                <td>98.63%</td>
+            </tr>
+
+            <tr>
+                <td>Macro Precision</td>
+                <td>97.53%</td>
+                <td>98.13%</td>
+            </tr>
+
+            <tr>
+                <td>Macro Recall</td>
+                <td>97.84%</td>
+                <td>98.20%</td>
+            </tr>
+
+            <tr>
+                <td>Macro F1-Score</td>
+                <td>0.9768</td>
+                <td>0.9816</td>
+            </tr>
+
+            <tr>
+                <td>Weighted F1-Score</td>
+                <td>0.9813</td>
+                <td>0.9863</td>
+            </tr>
+
+            <tr>
+                <td>Total Inference Time (2,776 images)</td>
+                <td>45.68 seconds</td>
+                <td>58.77 seconds</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="performance-note">
+    <strong>Research Interpretation</strong>
+    <p>
+        EfficientNetB0 achieved higher test accuracy and macro F1-score
+        than MobileNetV2 in the completed evaluation.
+        MobileNetV2 was faster in the measured evaluation.
+    </p>
+    <p>
+        Additional metrics, including precision, recall and exact
+        inference time, will be populated from the original evaluation
+        reports rather than estimated.
+    </p>
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (window.lucide) lucide.createIcons();
+
+    const labels = ["MobileNetV2", "EfficientNetB0"];
+
+    const chartOptions = {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "#CBD5E1"
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: "#94A3B8"
+                },
+                grid: {
+                    color: "rgba(148,163,184,0.12)"
+                }
+            },
+            x: {
+                ticks: {
+                    color: "#94A3B8"
+                },
+                grid: {
+                    display: false
+                }
+            }
+        }
+    };
+
+    new Chart(document.getElementById("accuracyChart"), {
+        type: "bar",
+        data: {
+            labels,
+            datasets: [{
+                label: "Accuracy (%)",
+                data: [98.13, 98.63],
+                backgroundColor: ["#10B981", "#22D3EE"],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            ...chartOptions,
+            scales: {
+                ...chartOptions.scales,
+                y: {
+                    ...chartOptions.scales.y,
+                    min: 95,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById("f1Chart"), {
+        type: "bar",
+        data: {
+            labels,
+            datasets: [{
+                label: "Macro F1-Score",
+                data: [0.9768, 0.9816],
+                backgroundColor: ["#10B981", "#22D3EE"],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            ...chartOptions,
+            scales: {
+                ...chartOptions.scales,
+                y: {
+                    ...chartOptions.scales.y,
+                    min: 0.95,
+                    max: 1
+                }
+            }
+        }
+    });
+
+});
+
+// Precision, Recall and F1 comparison
+new Chart(document.getElementById("prfChart"), {
+    type: "bar",
+    data: {
+        labels: ["Precision", "Recall", "Macro F1"],
+        datasets: [
+            {
+                label: "MobileNetV2",
+                data: [97.53, 97.84, 97.68],
+                backgroundColor: "#22D3EE"
+            },
+            {
+                label: "EfficientNetB0",
+                data: [98.13, 98.20, 98.16],
+                backgroundColor: "#10B981"
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                min: 90,
+                max: 100,
+                title: {
+                    display: true,
+                    text: "Score (%)"
+                }
+            }
+        }
+    }
+});
+
+// Inference Time comparison
+new Chart(document.getElementById("inferenceChart"), {
+    type: "bar",
+    data: {
+        labels: ["MobileNetV2", "EfficientNetB0"],
+        datasets: [{
+            label: "Inference Time (seconds)",
+            data: [45.68, 58.77],
+            backgroundColor: ["#22D3EE", "#10B981"]
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: "Seconds"
+                }
+            }
+        }
+    }
+});
+
+</script>
+
+{% endblock %}
+

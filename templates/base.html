@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0B1220">
+    <meta name="description" content="FreshVision AI - Intelligent fruit quality research and explainable AI platform">
+
+    <title>{% block title %}FreshVision AI{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i data-lucide="scan-eye"></i>
+                </div>
+
+                <div class="brand-text">
+                    <h2>FreshVision<span>AI</span></h2>
+                    <p>INTELLIGENT FOOD RESEARCH</p>
+                </div>
+
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="nav-section">
+                <p class="nav-heading">WORKSPACE</p>
+
+                <a href="/dashboard"
+                   class="nav-link {% if active_page == 'dashboard' %}active{% endif %}">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/analysis"
+                   class="nav-link {% if active_page == 'analysis' %}active{% endif %}">
+                    <i data-lucide="scan-eye"></i>
+                    <span>Fruit Analysis</span>
+                </a>
+
+                <a href="/comparison"
+                   class="nav-link {% if active_page == 'comparison' %}active{% endif %}">
+                    <i data-lucide="git-compare-arrows"></i>
+                    <span>Model Comparison</span>
+                </a>
+
+                <a href="/explainability"
+                   class="nav-link {% if active_page == 'explainability' %}active{% endif %}">
+                    <i data-lucide="brain-circuit"></i>
+                    <span>Explainable AI</span>
+                </a>
+
+                <a href="/analytics"
+                   class="nav-link {% if active_page == 'analytics' %}active{% endif %}">
+                    <i data-lucide="chart-no-axes-combined"></i>
+                    <span>Research Analytics</span>
+                </a>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="nav-section">
+                <p class="nav-heading">ACCOUNT</p>
+
+                <a href="/profile"
+                   class="nav-link {% if active_page == 'profile' %}active{% endif %}">
+                    <i data-lucide="user-round"></i>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="/feedback"
+                   class="nav-link {% if active_page == 'feedback' %}active{% endif %}">
+                    <i data-lucide="message-square"></i>
+                    <span>Feedback</span>
+                </a>
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-status">
+                    <span class="status-indicator"></span>
+                    <span>AI Workspace</span>
+                    <span class="status-label">READY</span>
+                </div>
+
+                <button class="logout-button" id="logoutButton">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- MOBILE OVERLAY -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- MAIN AREA -->
+        <main class="main-area">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+                        <i data-lucide="menu"></i>
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>FreshVision AI</span>
+                        <i data-lucide="chevron-right"></i>
+                        <strong>{% block breadcrumb %}Dashboard{% endblock %}</strong>
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="topbar-badge">
+                        <span class="status-indicator"></span>
+                        Research Workspace
+                    </div>
+
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-avatar" id="userAvatar">U</div>
+
+                        <div class="user-details">
+                            <strong id="userName">Researcher</strong>
+                            <span>Research Account</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <section class="page-content">
+
+                {% block content %}{% endblock %}
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="app-footer">
+                <p>© 2026 FreshVision AI. Intelligent Fruit Quality Research.</p>
+                <span>Powered by Explainable Artificial Intelligence</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- Shared JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

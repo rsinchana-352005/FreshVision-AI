@@ -1,0 +1,232 @@
+
+.profile-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 45px;
+}
+
+.profile-page .page-heading {
+    margin-bottom: 32px;
+}
+
+.profile-page .page-heading h1 {
+    font-size: 32px;
+    font-weight: 750;
+    margin-bottom: 9px;
+}
+
+.profile-page .page-heading p,
+.profile-section-heading p {
+    color: #94A3B8;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 32px !important;
+    border-radius: 20px;
+    margin-bottom: 38px;
+    background: linear-gradient(
+        120deg,
+        rgba(16,185,129,.10),
+        rgba(34,211,238,.05),
+        rgba(23,38,58,.95)
+    );
+}
+
+.profile-avatar-large {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    background: linear-gradient(135deg,#10B981,#0891B2);
+    color: white;
+    font-size: 36px;
+    font-weight: 750;
+}
+
+.profile-eyebrow {
+    display: block;
+    color: #34D399;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.7px;
+    margin-bottom: 9px;
+}
+
+.profile-hero-info h2 {
+    color: #F8FAFC;
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.profile-hero-info p {
+    color: #94A3B8;
+    font-size: 13px;
+    margin-bottom: 13px;
+}
+
+.profile-account-status {
+    color: #34D399;
+    font-size: 11px;
+}
+
+.profile-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10B981;
+    margin-right: 6px;
+}
+
+.profile-section-heading {
+    margin: 35px 0 19px;
+}
+
+.profile-section-heading h2 {
+    font-size: 22px;
+    color: #F8FAFC;
+    margin-bottom: 7px;
+}
+
+.profile-details-card {
+    padding: 8px 27px !important;
+    border-radius: 18px;
+}
+
+.profile-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 21px 4px;
+    border-bottom: 1px solid rgba(148,163,184,.12);
+}
+
+.profile-detail-row:last-child {
+    border-bottom: none;
+}
+
+.profile-detail-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #22D3EE;
+    background: rgba(34,211,238,.10);
+}
+
+.profile-detail-icon svg {
+    width: 19px;
+}
+
+.profile-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.profile-detail-content span {
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.profile-detail-content strong {
+    color: #F8FAFC;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.profile-workspace-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 19px;
+}
+
+.workspace-info-card {
+    padding: 25px !important;
+}
+
+.workspace-info-card > svg {
+    width: 25px;
+    height: 25px;
+    color: #34D399;
+    margin-bottom: 18px;
+}
+
+.workspace-info-card h3 {
+    font-size: 15px;
+    color: #F8FAFC;
+    margin-bottom: 9px;
+}
+
+.workspace-info-card p {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.profile-actions-card {
+    margin-top: 35px;
+    padding: 25px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.profile-actions-card h3 {
+    color: #F8FAFC;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.profile-actions-card p {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.profile-actions-card .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.profile-message {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #F87171;
+}
+
+@media (max-width: 850px) {
+    .profile-workspace-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .profile-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 23px !important;
+    }
+
+    .profile-page .page-heading h1 {
+        font-size: 26px;
+    }
+
+    .profile-actions-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
